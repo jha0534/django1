@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTP-8">
+<style>
+	td {text-align : center;}
+</style>
+<title>Insert title here</title>
+</head>
+<body>
+	<!--  'objs' 변수에 Question 객체들이 리스트 형태로 저장 -->
+	<h1> 투표 어플리케이션 </h1>
+	<p> 투표할 질문을 선택하세요. </p>
+	<!-- 
+	<table> : 표를 만들 때 쓰는 태그
+	<tr> : 행을 추가할 떄 사용하는 태그
+	<td> : 각 행에 열을 추가할 떄 사용하는 태그
+	<th> : 각 행에 열을 추가할 떄, 가운데 정렬, 굵게 처리를 해주는 태그 -->
+	<table width = "100%">
+		<tr>
+			<th>질문번호</th>
+			<th>제목</th>
+			<th>생성일</th>
+		</tr>
+		{% for q in objs %}
+		<tr>
+		<!--  q.id : Quesiton 객체마다 자동발급되는 정수값 -->
+			<td>{{q.id}}</td>
+			<td><a href = "{% url 'vote:detail' q.id %}">{{q.name}}</a></td>
+			<td>{{q.date}}</td>
+			<td><a href = '{% url "vote:qu" q.id %}'>수정</a></td>
+			<td><a href = '{% url "vote:qd" q.id %}'>삭제</a></td>
+		</tr>
+		{% endfor %}
+	</table>
+	<br>
+	<a href = '{% url "vote:qr" %}'>질문추가하기</a>
+	<br>
+	<a href = '{% url "vote:cr" %}'>답변추가하기</a>
+</body>
+</html>

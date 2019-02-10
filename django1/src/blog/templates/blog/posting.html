@@ -1,0 +1,17 @@
+{% extends 'blog/base.html' %}
+<!--  form: PostForm 폼클래스 객체 -->
+{% block content %}
+<h3>글 쓰기</h3>
+<!--  enctype = "multipart/form-data" : 해당 폼으로 파일 데이터를 서버에 전달할 수 있도록 설정 -->
+
+<form action = "" method = "POST" enctype = "multipart/form-data">
+{% csrf_token %}
+<table>
+{{form.as_table}}
+</table>
+<input type = "submit" value = "갱신">
+
+</form>
+
+<a href = "{% url 'blog:index' %}">메인페이지로 돌아가기</a>
+{% endblock %}

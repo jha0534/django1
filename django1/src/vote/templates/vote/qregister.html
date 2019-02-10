@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- View가 준 변수 'f' : QuestionForm 객체-->
+<!-- action 속성이 빈칸인 경우, 해당 form을 제출하게 되면 클라이언트가 현재 위치한 URL 주소로 데이터를 보냄 
+ex) 127.0.0.1:8080/vote/qregister 주소에서 form 태그 제출 시 
+ex) 127.0.0.1:8080/vote/qregister 로 데이터 전송 -> 동일한 뷰에 데이터 전송-->
+<h1> 질문 등록 페이지 </h1>
+<form action = "" method ="POST">
+	{% csrf_token %}
+	<!-- <p> 태그로 둘러쌓인 <input><label> 태그 생성함수 -->
+	<!--  HTML에서는 함수 호출시 소괄호 생략 -->
+	{{f.as_p}}
+	<input type = "submit" value = "질문생성">
+	
+</form>
+
+</body>
+<br>
+<a href = "{% url 'vote:index' %}">메인페이지로 돌아가기</a>
+</html>

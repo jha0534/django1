@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!--  q: Quesiton 객체, c_list : q와 연결된 choice 객체 리스트 -->
+	<h1>{{q.name}}</h1>
+	<p>{{q.date}}</p>
+	<!-- <form> : 해당태그 안에 있는 사용자 입력 값을 웹 서버에 보낼 수 있는 방식 
+	<input> type = "입력종류" name = "웹 서버에서 값을 꺼낼때 쓸 변수이름"
+	<label> 설명들 </label>-->
+	<!-- form의 action 속성 : 해당 데이터를 넘겨줄 웹서버의 URL 주소
+	method 속성 ' 해당 데이터를 보내는 방식 (GET, POST) -->
+	<form action = "{% url 'vote:vote' %}" method ="POST">
+		{% csrf_token %}
+		<!--  csrf_token : csrf 공격을 방지하기 위한 웹서버가 발급하는 일회용 키 -->
+		{% for c in c_list %}
+		<input type = "radio" name = "a" value ="{{c.id}}">
+		<label>{{c.name}}</label>
+		<a href = '{% url "vote:cu" c.id %}'>수정</a>
+		<a href = '{% url "vote:cd" c.id %}'>삭제</a>
+		<br>
+		{% endfor %}
+		<br>
+		<input type = "submit" value = "투표하기">
+	</form> 
+	<a href = "{% url 'vote:index' %}">메인페이지로 돌아가기</a>
+		
+</body>
+</html>

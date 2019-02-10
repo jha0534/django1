@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1> 데이터베이스에 저장된 북마크 객체</h1>
+	<!-- view함수에서 objs 변수 이름으로 북마크 객체 리스트를 전달함 -->
+	<ol>
+	{% for a in objs %} <!-- a : Bookmark 객체 -->
+	<!-- a : 링크 만들때 사용하는 태그. href속성에 저장된 주소로 이동 -->
+	<!-- ol : 순서 있는 리스트를 만들때 사용하는 태그.(ex 1. 2. 3...)
+	          요소추가 시 <li> 태그로 추가할 수 있음 -->
+		<li> <a href="{{ a.url }}"> {{ a.name }} </a>  </li>
+	{% endfor %}
+	</ol>
+</body>
+</html>
+
+
+
+
+

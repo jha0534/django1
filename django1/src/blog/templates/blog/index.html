@@ -1,0 +1,38 @@
+{% extends 'blog/base.html' %}
+<!-- extends : 다른 HTML을 확장하겠다는 선언. 확장할 HTML에 등록된 블록만 수정가능 -->
+<!--  list : Post 객체 리스트
+page_obj : ListView 클래스가 넘겨주는 페이지 정보
+page_obj.has_previous : 이전 페이지가 존재하면 True, 없으면 False 
+page_obj.has_next : 다음 페이지가 존재하면 True, 없으면 False
+page_obj.has_page_number : 현재 패이지 기준 다음 페이지 번호
+page_obj.previous_page_number : 현재 페이지 기준 이전페이지 번호 -->
+
+{% block content %}
+<!-- 이전페이지, 다음페이지 버튼 생성 -->
+{% if page_obj.has_previous%}
+	<a href = "?page = {{page_obj.previous_page_number}}">이전페이지</a>
+{% endif %}
+
+{% if page_obj.has_next%}
+	<a href = "?page = {{page_obj.next_page_number}}">다음페이지</a>
+{% endif %}
+
+<table width = "90%">
+	<tr>
+		<th>글번호</th>
+		<th>카테고리</th>
+		<th>제목</th>
+		<th>작성자</th>
+		<th>작성일</th>
+	</tr>
+	{% for post in list %}
+		<tr>
+			<th>{{post.id}}</th>
+			<th>{{post.category}}</th>
+			<th>{{post.headline}}</th>
+			<th>{{post.author}}</th>
+			<th>{{post.pub_date}}</th>
+		</tr>
+	{% endfor %}
+</table>
+{% endblock %}

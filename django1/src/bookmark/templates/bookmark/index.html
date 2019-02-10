@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- 파이썬은 UTF-8 인코딩 방식만 사용할 수 있음 -->
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>북마크 메인 페이지</h1>
+	<p>서버에서 동작하는 동적HTML 페이지 </p>
+	<!-- 해당 HTML 파일은 index 뷰함수로 부터 'a', 'b' 키에 저장된 값을 받음 -->
+	<!-- 파이썬 코드를 HTML에서 사용할 때, 변수나 함수의 결과값 출력 -> { { }} -->
+	<!-- 뷰함수에서 넘겨받은 데이터의 key부분을 HTML파일에서 변수처럼 사용 -->
+	<p> a변수에 저장된 값 : {{a}} </p>
+	<!-- { % %} : 파이썬 문법(if문, for문)을 사용할 수 있음
+	if문이나 for문에 포함되는 코드 작성 시 들여쓰기를 사용해 구분했지만 HTML코드에서는
+	if - endif for - endfor 를 묶어 영역을 지정해 사용함  -->
+	<ul>
+	{% for i in b %}
+		<li> {{i}} </li>
+	{% endfor %}
+	</ul>
+	
+</body>
+</html>
+
+
+
+
+
+
+

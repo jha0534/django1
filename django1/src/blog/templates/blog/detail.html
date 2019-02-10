@@ -1,0 +1,17 @@
+{% extends 'blog/base.html' %}
+<!--   -->
+{% block content %}
+<h3>[{{ obj.category}}]{{obj.headline}}</h3>
+<p>{{obj.author}}/ {{obj.pub_date}}</p>
+{% for f in obj.postfile_set.all %}
+
+	<a href ="{{f.file.url}}" download>첨부파일</a><br>
+{% endfor %}
+
+{% for i in obj.postimage_set.all %}
+	<!--  img src = "{{i}}"-->
+	<img src = "{{i.image.url}}"><br>
+{% endfor %}
+<pre>{{obj.content}}</pre>
+	
+{% endblock %}s

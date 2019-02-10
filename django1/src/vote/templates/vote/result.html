@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!-- q : Question 객체 변수 -->
+	<h1>{{q.name}} 투표결과</h1>
+	<!--  ul : 순서없는 리스트 , 요수추가시 <li> 태그 사용 -->
+	<ul>
+	<!--  HTML 파일에서 파이썬 코드 사용시 함수호출에 매개변수를 사용할 수 없음
+	따라서 변수 이름처럼 함수이름만 작성하며 됨 
+	=> 배개변수가 요구되는 함수를 사용할 수 없음 ex) range(5)-->
+		{% for c in q.choice_set.all %}
+		<li>{{c.name}} - {{c.vote}} 표 </li>
+		{% endfor %}
+	</ul>
+	<br>
+<a href = "{% url 'vote:index' %}">메인페이지로 돌아가기</a>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- i : ChoiceForm객체가 준 HTML 코드, 
+error : POST방식에서 유효한값이 아닌경우에 뷰가 주는 에러코드-->
+<h1>답변항목 생성/수정</h1>
+<!-- error 변수에 값이 들어있는 경우에만 출력 -->
+{% if error %}
+	<!-- style : css코드를 입력할 수 있는 공간,
+	color : 글씨 색을 지정하는 속성 -->
+	<p style="color: red;">{{error}}</p>
+{% endif %}
+<form action="" method ="POST">
+	{% csrf_token %}
+	<!-- i 변수에 들어있는 HTML코드가 table형태(<tr><td>)로 
+	          구성되있어 table태그 사용 -->
+	<table>
+		{{i}}
+	</table>
+	<input type="submit" value="갱신">
+</form>
+<a href="{% url 'vote:index' %}">메인페이지로 돌아가기</a>
+
+</body>
+</html>
